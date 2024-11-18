@@ -1,0 +1,225 @@
+<!Doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Weather App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="appStyle.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+<header>
+    <nav id= "topbar">
+        <section class="input-container">
+            <input type="text" id="city-input"
+                placeholder="Enter city name">
+        <button id="city-input-btn"
+                onclick="weatherFn($('#city-input').val())">
+                    Get Weather
+        </button> 
+        </section>
+        <ul>
+            <li><a href="#">DISCOVER</a></li>
+            <li><a href="#">HOME</a></li>
+            <li><a href="#">NEWS</a></li>
+            <li><a href="#">MAPS</a></li>
+        </ul>
+    </nav>
+    <date><h3>17 November 2024</h3></date>
+    <h1>Get forecast for your city</h1>
+</header>
+
+<main> <!-- fas fa in this section refers to font awesome icons-->
+    <section id="weatherInfo"> <!-- this section contains the weather information-->    
+        <article class = "card"> 
+            <h2><i class="fas fa-temperature-high"></i> Temperature</h2> 
+            <div class="widget-container">
+                <div class="temp-circle">
+                    <span class="temp-value">18°</span>
+                </div>
+                <div class="temp-details">
+                    <p><i class="fas fa-arrow-down"></i> Low: 16° at 7:00 a.m.</p>
+                    <p><i class="fas fa-person"></i> Feels like: 17°</p>
+                    <p><i class="fas fa-check"></i> Comfortable</p>
+                </div>
+            </div>
+        </article>
+        <article class="card"> 
+            <h2><i class="fas fa-cloud"></i> Cloud Cover</h2> 
+            <div class="widget-container">
+                <div class="cloud-widget">
+                    <svg viewBox="0 0 100 100" class="circle-progress">
+                        <circle cx="50" cy="50" r="45" fill="none" class="bg"/>
+                        <circle cx="50" cy="50" r="45" fill="none" class="progress" stroke-dasharray="42"/>
+                    </svg>
+                    <span class="percentage">42%</span>
+                </div>
+                <p><i class="fas fa-sun"></i> Mostly sunny at 4:56 a.m.</p>
+            </div>
+        </article> 
+        <article class="card"> <!-- this section contains the precipitation information-->
+            <h2>Precipitation</h2> 
+            <div> 
+                <p>0mm</p> 
+                <p>No precipitation in the next 24 hours.</p> 
+            </div> 
+        </article> 
+        <article class="card"> <!-- this section contains the wind information-->
+            <h2>Wind</h2> 
+            <div> <p>From S (170°)</p> 
+                <p>4 km/h Wind Speed</p> 
+                <p>11 km/h Wind Gust</p> 
+            </div> 
+        </article>
+         
+        <article class="card"> <!-- this section contains the UV information-->
+            <h2>UV</h2> 
+            <div> 
+                <p>3 (Moderate)</p> 
+                <p>Maximum UV exposure for today will be moderate, expected at 11:00 a.m.</p> 
+            </div> 
+        </article>   
+        <article class="card"> <!-- this section contains the sun information-->
+            <h2><i class="fas fa-sun"></i> Sun</h2>
+            <div class="widget-container">
+                <div class="day-cycle">
+                    <svg viewBox="0 0 100 50" class="cycle-progress">
+                        <path d="M0,50 A50,50 0 0,1 100,50" class="cycle-path"/>
+                        <circle cx="75" cy="50" r="3" class="sun-position"/>
+                    </svg>
+                    <div class="time-labels">
+                        <span>Sunrise 6:22 AM</span>
+                        <span>Sunset 4:57 PM</span>
+                    </div>
+                </div>
+                <div class="sun-details">
+                    <p><i class="fas fa-clock"></i> 10 hrs 35 mins</p>
+                    <p><i class="fas fa-sunrise"></i> Sunrise: 6:22 AM</p>
+                    <p><i class="fas fa-sunset"></i> Sunset: 4:57 PM</p>
+                </div>
+            </div>
+        </article>
+        <article class="card"> <!-- this section contains the moon information-->
+            <h2><i class="fas fa-moon"></i> Moon</h2>
+            <div class="widget-container">
+                <div class="moon-phase">
+                    <svg viewBox="0 0 100 100" class="moon-circle">
+                        <circle cx="50" cy="50" r="45" class="moon-bg"/>
+                        <path class="moon-fill" d="M50,5 A45,45 0 1,1 50,95 A35,35 0 1,0 50,5"/>
+                    </svg>
+                    <span class="phase-percentage">81%</span>
+                </div>
+                <div class="moon-details">
+                    <p><i class="fas fa-clock"></i> 15 hrs 1 min</p>
+                    <p><i class="fas fa-arrow-up"></i> Moonrise: 6:10 PM</p>
+                    <p><i class="fas fa-arrow-down"></i> Moonset: 9:11 AM</p>
+                    <p><i class="fas fa-moon"></i> Phase of moon: 81%</p>
+                    <p><i class="fas fa-calendar"></i> Next full moon: Dec 16</p>
+                </div>
+            </div>
+        </article>
+        <article class="card"> <!-- this section contains the humidity information-->
+            <h2><i class="fas fa-tint"></i> Humidity</h2>
+            <div class="widget-container">
+                <div class="humidity-gauge">
+                    <svg viewBox="0 0 100 100" class="circle-progress">
+                        <circle cx="50" cy="50" r="45" fill="none" class="bg"/>
+                        <circle cx="50" cy="50" r="45" fill="none" class="progress" stroke-dasharray="75"/>
+                    </svg>
+                    <span class="percentage">75%</span>
+                </div>
+                <p>62% Relative Humidity</p> 
+                <p>10° Dew point</p>
+                <p><i class="fas fa-info-circle"></i> Slightly humid</p>
+            </div>
+        </article>
+        <article class="card"> <!-- this section contains the UV information-->
+            <h2><i class="fas fa-sun"></i> UV Index</h2>
+            <div class="widget-container">
+                <div class="uv-scale">
+                    <div class="uv-indicator"></div>
+                    <div class="uv-levels">
+                        <span>Low</span>
+                        <span>Moderate</span>
+                        <span>High</span>
+                        <span>Very High</span>
+                    </div>
+                </div>
+                <p><i class="fas fa-exclamation-circle"></i> Moderate UV exposure</p>
+            </div>
+        </article>
+        <article class="card"> <!-- this section contains the air quality information-->
+            <h2><i class="fas fa-wind"></i> Air Quality</h2>
+            <div class="widget-container">
+                <div class="aqi-meter">
+                    <div class="aqi-value">45</div>
+                    <div class="aqi-scale">
+                        <span class="good">Good</span>
+                        <span class="moderate">Moderate</span>
+                        <span class="poor">Poor</span>
+                    </div>
+                </div>
+                <p><i class="fas fa-check-circle"></i> Good air quality</p> 
+                <p>steady air quality with primary pollutant: PM10 17 μg/m³.</p> 
+            </div>
+        </article>
+        <article class="card"> <!-- this section contains the visibility information-->
+            <h2><i class="fas fa-eye"></i> Visibility</h2>
+            <div class="widget-container">
+                <div class="visibility-meter">
+                    <div class="meter-scale">
+                        <div class="meter-indicator"></div>
+                    </div>
+                    <div class="meter-labels">
+                        <span>0</span>
+                        <span>5</span>
+                        <span>10</span>
+                        <span>15</span>
+                        <span>20km</span>
+                    </div>
+                </div>
+                <p><i class="fas fa-binoculars"></i> Clear visibility: 16km</p>
+                <p>Remaining steady at 35 km.</p>
+            </div>
+        </article>
+        <article class="card"> <!-- this section contains the pressure information-->           
+            <h2><i class="fas fa-compress-alt"></i> Pressure</h2>
+            <div class="widget-container">
+                <div class="pressure-gauge">
+                    <div class="gauge-dial">
+                        <div class="gauge-pointer"></div>
+                    </div>
+                    <div class="pressure-value">1013 hPa</div>
+                </div>
+                <p><i class="fas fa-arrow-up"></i> Rising</p>
+                <p>1016 mb</p> 
+                <p>Falling slowly in the last 3 hours. Expected to rise slowly in the next 3 hours.</p>
+            </div>
+        </article>
+    </section>
+        <Section class="container">
+            <section class="weather-card">
+                <h1 style="color: rgb(0, 0, 0);">
+                    23°
+                </h1>
+                <h3>
+                    Weather App
+                </h3>
+            </section>
+        </section>
+        <aside>Aside for news display</aside>
+        <!-- <section id="weather-info"
+                    class="animate__animated animate__fadeIn">
+                    <h3 id="city-name">Lagos</h3>
+                    <p id="date"></p> -->
+                    <!-- <img id=" " src=" " alt="Weather Icon"> -->
+                    <!-- <p id="temperature"></p>
+                    <p id="description"></p>
+                    <p id="wind-speed"></p>
+            </section> -->
+</main>
+
+    <footer>links to about, privacy policy, and terms of service; social media icons; and a copyright notice</footer>
+
+</body>

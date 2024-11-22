@@ -1,0 +1,552 @@
+/* appStyle.css */
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: black;
+ }
+ 
+ header {
+   background-image: url('pexels-roman-odintsov-4870969.jpg'); 
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 600px;  /* This is to format the height of the background image*/
+    /* opacity: 90%; */
+    background-position: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
+ }
+
+ header nav{
+    background-color: rgba(202, 185, 185, 0.8); /* Semi-transparent background */
+    /* position:fixed; */
+ }
+
+header nav#topbar {
+    display: flex;
+    /* justify-content: space-around; */
+    align-items: center;
+    padding: 10px 20px;
+    
+}
+
+header nav#topbar ul {
+    display: flex;
+    list-style: none;
+    /* margin: 0; */
+    /* padding: 0; */
+    gap: 10px;  /* Adds space between list items */
+}
+
+header nav#topbar ul li {
+    display: inline-block;
+    padding: 15px 0 15px 80px;
+   
+    
+}
+
+#topbar ul li a {
+    text-decoration: none;
+    font-weight: 600;
+    color: #000;
+    font-size: large;
+}
+
+date h3 { 
+   color: #2c3e50;
+   font-size: 2.2rem;
+   font-family: 'Oswald', sans-serif;
+   text-align: center;
+   margin: 30px 0;
+}
+
+h1 {
+   color: #34495e;
+   font-size: 4.5rem;
+   text-align: center;
+   margin: 80px 0;
+   font-weight: 500;
+   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.input-container {
+    display: flex;
+    /* align-items: center; */
+    gap: 3px;  /* Adds space between input and button */
+}
+
+#city-input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#city-input-btn {
+    padding: 10px 15px;
+    border: none;
+    background-color: #28a745;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+main section#weatherInfo {
+   background-color: rgba(120, 130, 133, 0.3);
+   background-image: url('pexels-karolina-grabowska-4749942.jpg');
+   background-size: cover;
+   background-repeat: no-repeat;
+   background-position: center;
+}
+#weatherInfo { 
+   display: flex; 
+   flex-wrap: wrap; 
+   justify-content: center; 
+}
+
+#weatherInfo .card{
+    background-color: rgba(120, 130, 133, 0.3);
+    font-family: 'Oswald', sans-serif; 
+    font-weight: 300;  
+    text-align: center;
+    margin: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 7px;
+    flex: 1 0 calc(25% + 1rem);
+    min-width: 200px;
+    max-width: calc(25% + 1rem);
+    box-shadow: 6px 6px 5px 0px #241b03;
+    display: flex;
+    flex-direction: column;
+}
+/* old code for reference -
+#weatherInfo .card{
+   background-color: rgba(120, 130, 133, 0.3);
+   font-family: 'Oswald', sans-serif; 
+   font-weight: 300;  
+   text-align: center;
+   margin: 0.5rem;
+   padding: 0.5rem;
+   border-radius: 7px;
+   flex: 1 0 200px; * to make cards more equal in size *
+   min-width: 200px; * Added to ensure minimum width *
+   max-width: 300px;
+   box-shadow: 6px 6px 5px 0px #241b03;
+   display: flex;
+   flex-direction: column;
+   flex: 1 1 200px; * Flex-grow, flex-shrink, and flex-basis * 
+   max-width: 300px;
+}*/  
+
+
+.container {
+    background-color: rgba(71, 37, 37, 0.9); /* Slightly more opaque for the container */
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 600px;
+    margin: 20px auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.weather-card {
+    text-align: center;
+}
+
+h1 {
+    margin: 0;
+}
+
+h3 {
+    margin: 10px 0;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(20, 148, 199, 0.8);
+    width: 100%;
+}
+
+/* Link styling */
+a:link{
+    padding: 10px;
+    border-radius:15px;
+}
+
+a:hover{
+    color: #000;
+    background-color:rgb(172, 140, 37);
+    transition-duration: 1s;
+}
+
+#city-input-btn:hover {
+    background-color: #3dbd24;
+}
+
+/* media queries for responsiveness */
+@media screen and (max-width: 768px) {
+    #topbar {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    #topbar ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    #topbar ul li {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .input-container {
+        width: 100%;
+        justify-content: center;
+    }
+
+    #city-input {
+        width: 50%;  /* Make input field responsive */
+    }
+}
+
+/* For even smaller screens */
+@media screen and (max-width: 480px) {
+    #topbar ul {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    #city-input {
+        width: 70%;  /* Larger input field for mobile */
+    }
+
+    #city-input-btn {
+        padding: 8px 12px;  /* Slightly smaller button */
+    }
+}
+
+/* styles for the widgets */
+.widget-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Temperature widget */
+.temp-circle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.temp-value {
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
+/* Cloud cover progress circle */
+.circle-progress {
+    width: 100px;
+    height: 100px;
+    transform: rotate(-90deg);
+}
+
+.circle-progress circle {
+    stroke-width: 8;
+    stroke: rgba(255, 255, 255, 0.2);
+}
+
+.circle-progress .progress {
+    stroke: white;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 0.5s;
+}
+
+.cloud-widget {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.percentage {
+    position: absolute;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+/* General icon styling */
+.fas {
+    margin-right: 8px;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+    .temp-circle {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .temp-value {
+        font-size: 2em;
+    }
+}
+
+/* Humidity Gauge */
+.humidity-gauge {
+    position: relative;
+    width: 120px;
+    height: 120px;
+}
+
+/* UV Scale */
+.uv-scale {
+    width: 100%;
+    height: 40px;
+    background: linear-gradient(to right, 
+        #3EA72D 0%, #86B828 25%, 
+        #F0D800 50%, #F08800 75%, 
+        #DC0000 100%);
+    border-radius: 20px;
+    position: relative;
+    margin: 10px 0;
+}
+
+.uv-indicator {
+    position: absolute;
+    top: -10px;
+    width: 20px;
+    height: 20px;
+    background: white;
+    border-radius: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    left: 30%;
+}
+
+.uv-levels {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    color: white;
+    font-size: 0.8em;
+}
+
+/* AQI Meter */
+.aqi-meter {
+    width: 100%;
+    padding: 15px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.1);
+}
+
+.aqi-value {
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+}
+
+.aqi-scale {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.aqi-scale span {
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.8em;
+}
+
+.aqi-scale .good { background: #3EA72D; }
+.aqi-scale .moderate { background: #F0D800; }
+.aqi-scale .poor { background: #DC0000; }
+
+/* Visibility Meter */
+.visibility-meter {
+    width: 100%;
+}
+
+.meter-scale {
+    height: 10px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.meter-indicator {
+    height: 100%;
+    background: white;
+    transition: width 0.5s;
+    width: 80%;
+}
+
+.meter-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+    font-size: 0.8em;
+}
+
+/* Pressure Gauge */
+.pressure-gauge {
+    width: 150px;
+    height: 150px;
+    position: relative;
+}
+
+.gauge-dial {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 5px solid rgba(255,255,255,0.2);
+    position: relative;
+}
+
+.gauge-pointer {
+    position: absolute;
+    width: 4px;
+    height: 50%;
+    background: white;
+    left: 50%;
+    bottom: 50%;
+    transform-origin: bottom center;
+    transition: transform 0.5s;
+    transform: rotate(45deg);
+}
+
+/* Sun/Moon Cycle */
+.day-cycle {
+    width: 100%;
+    max-width: 200px;
+    margin: 0 auto;
+}
+
+.cycle-progress {
+    width: 100%;
+    height: 60px;
+    margin-bottom: 10px;
+}
+
+.cycle-path {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.2);
+    stroke-width: 2;
+}
+
+.sun-position {
+    fill: #FFD700;  /* Golden color for sun */
+}
+
+.sun-details {
+    margin-top: 15px;
+    text-align: center;
+}
+
+/* Moon Card Styles */
+.moon-phase {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto;
+}
+
+.moon-circle {
+    width: 100%;
+    height: 100%;
+}
+
+.moon-bg {
+    fill: rgba(255, 255, 255, 0.2);
+}
+
+.moon-fill {
+    fill: white;
+}
+
+.phase-percentage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.moon-details {
+    margin-top: 15px;
+    text-align: center;
+}
+
+/* Common styles for both cards */
+.widget-container {
+    padding: 15px;
+}
+
+.time-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+/* Icon styles */
+.fas {
+    margin-right: 8px;
+    width: 20px;
+    text-align: center;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+    .moon-phase {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .day-cycle {
+        max-width: 180px;
+    }
+}
+
+/* to add classes for dynamic values */
+.pressure-rising {
+    transform: rotate(45deg);
+}
+
+.pressure-falling {
+    transform: rotate(-45deg);
+}
+
+.visibility-high {
+    width: 80%;
+}
+
+.visibility-medium {
+    width: 50%;
+}
+
+.visibility-low {
+    width: 20%;
+}
+
+/* For the sun position, to create different time-based classes */
+.sun-morning {
+    transform: translateX(25%);
+}
+
+.sun-noon {
+    transform: translateX(50%);
+}
+
+.sun-evening {
+    transform: translateX(75%);
+}

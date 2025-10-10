@@ -1,0 +1,49 @@
+const content = `
+[
+    {
+        "category": "clear",
+        "conditions": ["Sunny", "Clear", "Mostly Clear"],
+        "image": "./image/sunny.jpg"
+    },
+    {
+        "category": "cloudy",
+        "conditions": ["Partly Cloudy", "Cloudy", "Overcast", "Patchy Cloudy"],
+        "image": "./image/cloudy.jpg"
+    },
+    {
+        "category": "rainy",
+        "conditions": ["Light Rain", "Drizzle", "Moderate Rain", "Heavy Rain", "Torrential Rainfall"],
+        "image": "./image/rainy.jpg"
+    },
+    {
+        "category": "snowy",
+        "conditions": ["Light Snow", "Heavy Snow", "Blizzard", "Freezing Rain"],
+        "image": "./image/snowy.jpg"
+    },
+    {
+        "category": "stormy",
+        "conditions": ["Thunderstorm", "Thundery Outbreaks Possible"],
+        "image": "./image/stormy.jpg"
+    },
+    {
+        "category": "foggy",
+        "conditions": ["Mist", "Fog", "Haze", "Freezing Fog"],
+        "image": "./image/foggy.jpg"
+    },
+    {
+        "category": "dusty",
+        "conditions": ["Dust", "Sandstorm", "Smoke"],
+        "image": "./image/dusty.jpg"
+    },
+    {
+        "category": "windy",
+        "conditions": ["Gale", "Severe Gale"],
+        "image": "./image/windy.jpg"
+    },
+    {
+        "category": "default",
+        "conditions": [],
+        "image": "./image/default-weather.jpg"
+    }
+]
+`;

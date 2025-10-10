@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <!-- Merged Styles -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="weather.json"></script>
+
+    <script src="js/scriptMain.js" defer></script>
+</head>
+
+<body>
+    <header id="header-background"> <!--Header section for the app -->
+        <nav id="topbar"> <!-- Navigation bar -->
+            <section class="input-container">
+                <input type="text" id="city-input" placeholder="Enter city name"> <!--Input for city name-->
+                <button id="city-input-btn" onclick="weatherFn($('#city-input').val())">Get Weather</button> <!-- Button to fetch weather -->
+            </section>
+            <ul>
+                <li><a href="mainPage.html">HOME</a></li> <!-- Link to the main page -->
+                <li><a id="history-link" href="#">HISTORY</a></li> <!-- Link to the history page -->
+                <li><a href='https://zoom.earth/maps/satellite/#view=53.015,-112.837,6z'>MAP</a></li> <!-- Link to the map page -->
+                <li><a href='https://www.ualberta.ca/en/news/index.html'>NEWS</a></li> <!-- Link to the news page -->
+            </ul>
+        </nav>
+        <h3 id="today"></h3> <!-- Display today's date -->
+        <date></date>
+        <h1 id="city">Get forecast for your city</h1>  <!-- Main title -->
+    </header>
+
+
+    <div class="desktop-only">
+
+        <main id="main-background" style="background-image: url('./image/default-weather.jpg');"> <!-- Main content area -->
+            <div class="left-section">
+                <!-- Current weather information -->
+                <div class="current-info">
+                    <!-- Weather cards for various metrics -->
+                    <article class="card">
+                        <h2><i class="fas fa-temperature-high"></i> Temperature</h2>
+                        <div class="widget-container">
+                            <div class="temp-circle">
+                                <span class="temp-value">18°</span> <!-- Current temperature with placeholder -->
+                            </div>
+                            <div class="temp-details">
+                                <p><i class="fas fa-person"></i> Feels like: 17°</p> <!-- Feels like temperature-->
+                                <p><i class="fas fa-check"></i> Comfortable</p> <!-- Comfort level -->
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <!-- Additional weather metrics (Cloud Cover, Precipitation, Wind, UV, Sun) -->
+                    <article class="card"> <!-- Article for cloud cover information -->
+                        <h2><i class="fas fa-cloud"></i> Cloud Cover</h2> <!-- Header for cloud cover section -->
+                        <div class="widget-container"> <!-- Container for cloud cover widget -->
+                            <div class="cloud-widget"> <!-- Cloud cover widget -->
+                                <svg viewBox="0 0 100 100" class="circle-progress"> <!-- SVG for circle progress -->
+                                    <circle cx="50" cy="50" r="45" fill="none" class="bg" /> <!-- Background circle -->
+                                    <circle cx="50" cy="50" r="45" fill="none" class="progress" stroke-dasharray="42" /> <!-- Progress circle -->
+                                </svg>
+                                <span class="percentage">42%</span> <!-- Percentage of cloud cover -->
+                            </div>
+                            <p id="cloud-description"><i class="fas fa-sun"></i> Mostly sunny at 4:56 a.m.</p> <!-- Description of cloud cover -->
+                        </div>
+                    </article>
+
+                    <article class="card"> <!-- Article for precipitation information -->
+                        <h2>Precipitation</h2> <!-- Header for precipitation section -->
+                        <div class="precipitation"> <!-- Container for precipitation information -->
+                            <p>0mm</p> <!-- Precipitation amount -->
+                            <p>No precipitation in the next 24 hours.</p> <!-- Description of precipitation -->
+                        </div>
+                    </article>
+
+                    <article class="card"> <!-- Article for wind information -->
+                        <h2>Wind</h2> <!-- Header for wind section -->
+                        <div class="wind"> <!-- Container for wind information -->
+                            <p>From S (170°)</p> <!-- Wind direction -->
+                            <p>4 km/h Wind Speed</p> <!-- Wind speed -->
+                            <p>11 km/h Wind Gust</p> <!-- Wind gust speed -->
+                        </div>
+                    </article>
+
+                    <article class="card"> <!-- Article for UV information -->
+                        <h2><i class="fas fa-sun"></i>UV</h2> <!-- Header for UV section with sun icon -->
+                        <div class="widget-container"> <!-- Container for UV widget -->
+                            <div class="uv-scale"> <!-- UV scale container -->
+                                <div class="uv-indicator"></div> <!-- UV indicator -->
+                                <div class="uv-levels"> <!-- UV levels container -->
+                                    <span>Low</span> <!-- Low UV level -->
+                                    <span>Moderate</span> <!-- Moderate UV level -->
+                                    <span>High</span> <!-- High UV level -->
+                                    <span>Very High</span> <!-- Very High UV level -->
+                                </div>
+                            </div>
+                            <p><i class="fas fa-exclamation-circle"></i> Moderate UV exposure</p> <!-- UV exposure warning -->
+                            <div class="uv"> <!-- UV details container -->
+                                <p>3 (Moderate)</p> <!-- UV index -->
+                                <p>Maximum UV exposure for today will be moderate, expected at 11:00 a.m.</p> <!-- UV exposure description -->
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card"> <!-- Article for sun information -->
+                        <h2><i class="fas fa-sun"></i> Sun</h2> <!-- Header for sun section with sun icon -->
+                        <div class="widget-container"> <!-- Container for sun widget -->
+                            <div class="day-cycle"> <!-- Day cycle container -->
+                                <svg viewBox="0 0 100 50" class="cycle-progress"> <!-- SVG for day cycle progress -->
+                                    <path d="M0,50 A50,50 0 0,1 100,50" class="cycle-path" />
+                                    <circle cx="75" cy="50" r="3" class="sun-position" />
+                                </svg>
+                                <div class="time-labels"> <!-- Time labels container -->
+                                    <span>Sunrise 6:22 AM</span> <!-- Sunrise time -->
+                                    <span>Sunset 4:57 PM</span> <!-- Sunset time -->
+                                </div>
+                            </div>
+                            <div class="sun-details"> <!-- Sun details container -->
+                                <p><i class="fas fa-clock"></i> 10 hrs 35 mins</p> <!-- Daylight hours -->
+                                <p><i class="fas fa-sunrise"></i> Sunrise: 6:22 AM</p> <!-- Sunrise time with icon -->
+                                <p><i class="fas fa-sunset"></i> Sunset: 4:57 PM</p> <!-- Sunset time with icon -->
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- next 24 hours -->
+                <h2>24-Hour Forecast</h2> <!-- Forecast for the next 24 hours -->
+                <div class="hourly-info" id="hourly">
+                    <div>Loading</div> <!-- Placeholder for hourly forecast -->
+                </div>
+
+                <!-- next 7 days -->
+                <div class="weekly-info" id="daily"> <!-- Forecast for the next 7 days -->
+                    <div>Loading</div> <!-- Placeholder for daily forecast -->
+                </div>
+            </div>
+
+            <div class="right-section"> 
+                <article class="card"> <!-- Article for moon phase information -->
+                    <h2><i class="fas fa-moon"></i> Moon</h2> <!-- Header for moon section with moon icon -->
+                    <div class="widget-container"> <!-- Container for moon widget -->
+                        <div class="moon-phase"> <!-- Moon phase container -->
+                            <svg viewBox="0 0 100 100" class="moon-circle"> <!-- SVG for moon circle -->
+                                <circle cx="50" cy="50" r="45" class="moon-bg" /> <!-- Background circle for moon -->
+                                <path class="moon-fill" d="M50,5 A45,45 0 1,1 50,95 A35,35 0 1,0 50,5" /> <!-- Path for moon fill -->
+                            </svg>
+                            <span class="phase-percentage">81%</span> <!-- Current moon phase percentage with placeholder -->
+                        </div>
+                        <div class="moon-details"> <!-- Moon details container -->
+                            <p><i class="fas fa-clock"></i> 15 hrs 1 min</p> <!-- Moon duration with clock icon -->
+                            <p><i class="fas fa-arrow-up"></i> Moonrise: 6:10 PM</p> <!-- Moonrise time with up arrow icon -->
+                            <p><i class="fas fa-arrow-down"></i> Moonset: 9:11 AM</p> <!-- Moonset time with down arrow icon -->
+                            <p><i class="fas fa-moon"></i> Phase of moon: 81%</p> <!-- Moon phase percentage with moon icon -->
+                            <p><i class="fas fa-calendar"></i> Next full moon: Dec 16</p> <!-- Next full moon date with calendar icon -->
+                        </div>
+                    </div>
+                </article>
+                <article class="card"> <!-- Article for additional weather metrics (Humidity, Visibility, Pressure) -->
+                    <h2><i class="fas fa-tint"></i> Humidity</h2> <!-- Header for humidity section with water droplet icon -->
+                    <div class="widget-container" id="humidity"> <!-- Container for humidity information with an ID -->
+                        <div class="humidity-gauge"> <!-- Humidity gauge container -->
+                            <svg viewBox="0 0 100 100" class="circle-progress"> <!-- SVG for circle progress -->
+                                <circle cx="50" cy="50" r="45" fill="none" class="bg" /> <!-- Background circle for gauge -->
+                                <circle cx="50" cy="50" r="45" fill="none" class="progress" stroke-dasharray="75" /> <!-- Progress circle for gauge -->
+                            </svg>
+                            <span class="percentage">75%</span> <!-- Humidity percentage -->
+                        </div>
+                        <p>62% Relative Humidity</p> <!-- Relative humidity percentage -->
+                        <p>10° Dew point</p> <!-- Dew point temperature -->
+                        <p><i class="fas fa-info-circle"></i> Slightly humid</p> <!-- Humidity description with info icon -->
+                    </div>
+                </article>
+
+                <article class="card"> <!-- this section contains the visibility information-->
+                    <h2><i class="fas fa-eye"></i> Visibility</h2> <!-- Header for visibility section with icon -->
+                    <div class="widget-container" id="visibility"> <!-- Container for visibility information with an ID -->
+                        <div class="visibility-meter"> <!-- Visibility meter container -->
+                            <div class="meter-scale"> <!-- Meter scale container -->
+                                <div class="meter-indicator"></div> <!-- Meter indicator -->
+                            </div>
+                            <div class="meter-labels"> <!-- Meter labels container -->
+                                <!-- Visibility labels with placeholders-->
+                                <span>0</span>
+                                <span>5</span>
+                                <span>10</span>
+                                <span>15</span>
+                                <span>20km</span>
+                            </div>
+                        </div>
+                        <p><i class="fas fa-binoculars"></i> Clear visibility: 16km</p> <!-- Paragraph for clear visibility information with icon -->
+                        <p>Remaining steady at 35 km.</p> <!-- Paragraph for additional visibility information -->
+                    </div>
+                </article>
+
+                <article class="card"> <!-- this section contains the pressure information-->
+                    <h2><i class="fas fa-compress-alt"></i> Pressure</h2> <!-- Header for pressure section with icon -->
+                    <div class="widget-container" id="pressure"> <!-- Container for pressure information with an ID -->
+                        <div class="pressure-gauge"> <!-- Pressure gauge container -->
+                            <div class="gauge-dial"> <!-- Gauge dial container -->
+                                <div class="gauge-pointer"></div> <!-- Gauge pointer -->
+                            </div>
+                            <div class="pressure-value">1013 hPa</div> <!-- Pressure value display -->
+                        </div>
+                        <p><i class="fas fa-arrow-up"></i> Rising</p> <!-- Paragraph for pressure trend information with icon -->
+                        <p>1016 mb</p> <!-- Paragraph for pressure value -->
+                        <p>Falling slowly in the last 3 hours. Expected to rise slowly in the next 3 hours.</p> <!-- Paragraph for pressure trend description -->
+                    </div>
+                </article>
+            </div>
+        </main>
+        <footer>
+            <p>Data source from WeatherAPI, Image source from unsplash.</p>
+        </footer>
+    </div>
+
+</body>
+</html>

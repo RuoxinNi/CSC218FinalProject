@@ -1,0 +1,695 @@
+body {
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+    font-family: 'Arial', sans-serif; /* Set default font family */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    background-color: #f5f5f5; /* Set default background color */
+}
+
+/*tablet version*/
+@media screen and (max-width: 768px) {
+
+    /*change in header style*/
+    header {
+        display: flex; /* use Flexbox */
+        flex-direction: column; /* vertically */
+        justify-content: center; /* centered vertically */
+        align-items: center; /* centered horizontally */
+        padding: 0px; /* no padding */
+        min-height: 300px !important; /* smaller header height */
+    }
+
+    #topbar {
+        display: flex;
+        flex-direction: column; /* vertially */
+        align-items: center; /* centered horizontally */
+        gap: 10px; /* gap between input and ul */
+    }
+
+    .input-container {
+        display: flex; /* use flexbox */
+        flex-direction: row; /* horizontally */
+        justify-content: center; /* centered horizontally */
+        gap: 5px; /* gap between input and button */
+        width: 100%; /* fill container */
+        max-width: 500px; /* limit max width */
+    }
+
+    #city-input {
+        width: 40%; /* Set input width to 40% on smaller screens */
+        font-size: 12px; /* smaller font */
+    }
+
+    #city-input-btn {
+        font-size: 12px; /* smaller font */
+        margin-top: 5px; /* margin */
+    }
+
+    #topbar ul {
+        display: flex; /* use Flexbox */
+        justify-content: space-between; /* distribute evenly in the container */
+        align-items: center; /* centered vertically */
+        width: 100%; /* fill the container */
+        max-width: 600px; /* limit the max width */
+        padding: 0; /* remove padding */
+        margin: 0; /* remove margin */
+        gap: 0 !important; /* remove gap */
+        flex-wrap: wrap !important; /* wrap contents when the screen size shrinks */
+        font-size: 12px !important; /* smaller font */
+    }
+
+        #topbar ul li {
+            flex: 1; /* evenly distribute */
+            text-align: center; /* centered */
+        }
+
+            #topbar ul li a {
+                font-size: 12px !important; /* smaller font */
+                padding: 5px 10px; /* padding */
+            }
+
+    h1, h3 {
+        font-size: 1.2rem !important; /* smaller font */
+    }
+
+    /*change in left&right section style*/
+    .right-section {
+        display: none !important; /* hide right-section in mobile version */
+    }
+
+    .left-section {
+        flex: 1 !important; /* strech left-section to fill the blank after hiding right-section */
+    }
+}
+
+/*Mobile version*/
+@media screen and (max-width: 480px) {
+
+    /* change the style of current-info when screen is too small */
+    .current-info {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap !important; /* no wrap, just one row */
+        overflow-x: auto;
+    }
+
+        .current-info .card {
+            flex: 0 0 auto;
+            min-width: 180px; /* minimum width, content of each card won't be compressed */
+            margin-right: 10px;
+        }
+
+    /*change the style of weekly-info*/
+    .weekly-info {
+        overflow-x: auto; /*when screen is too small*/
+    }
+
+    .week-row {
+        min-width: 180px; /*make sure content of each row won't be compressed*/
+    }
+
+    #condition-text {
+        display: none; /* hide condition text in mobile version */
+    }
+}
+
+/*common used syle*/
+
+main {
+    display: flex; /* Use Flexbox layout */
+    justify-content: space-between; /* Align items to the left and right */
+    align-items: stretch; /* Make child elements equal height */
+    gap: 20px; /* Set gap between items */
+    padding: 20px; /* Add padding */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    position: relative; /* Set position to relative */
+    z-index: 1; /* Set z-index to 1 */
+    background-color: rgba(120, 130, 133, 0.3); /* Set background color with alpha value */
+    background-image: url('../image/default-weather.jpg'); /* Set background image */
+    background-size: cover; /* Scale the background image to be as large as possible */
+    background-repeat: no-repeat; /* Do not repeat the background image */
+    background-position: center; /* Center the background image */
+    transition: background-image 0.5s ease-in-out; /* Add transition effect to the background image */
+    /*Outline the fonts to make it visible in all backgrounds*/
+    -webkit-text-stroke: 0.3px rgb(221, 221, 221); /* WebKit supportive browsers */
+    text-shadow: 0.3px 0.3px 0 rgb(221, 221, 221), -0.3px 0.3px 0 rgb(221, 221, 221), 0.3px -0.3px 0 rgb(221, 221, 221), -0.3px -0.3px 0 rgb(221, 221, 221); /* other browsers */
+    font-weight: bold; /* Set font weight to bold */
+}
+
+.left-section, .right-section {
+    display: flex; /* Use Flexbox layout */
+    flex-direction: column; /* Arrange items in a column */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    gap: 20px; /* Set gap between items */
+}
+
+.left-section {
+    width: 70%; /* Set width to 70% */
+}
+
+.right-section {
+    width: 30%; /* Set width to 30% */
+    overflow: hidden; /* Hide overflow to avoid footer overlap */
+}
+
+
+.left-section h2 {
+    text-align: center; /* Center text */
+    font-family: 'Oswald', sans-serif; /* Set font family */
+    font-weight: bold; /* Set font weight to bold */
+    color: #2c3e50; /* Set text color */
+}
+
+
+header, footer {
+    position: relative; /* Set position to relative */
+    z-index: 10; /*ensure header is at the front*/
+}
+
+header {
+    background-image: url('../image/default-daylight.jpg'); /* Set background image */
+    background-size: cover; /* Scale the background image to be as large as possible */
+    background-repeat: no-repeat; /* Do not repeat the background image */
+    min-height: 600px; /* Set minimum height */
+    background-position: center; /* Center the background image */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.6); /* Add box shadow */
+    transition: background-image 0.5s ease-in-out; /* Add transition effect to the background image */
+}
+
+    header nav {
+        background-color: rgba(202, 185, 185, 0.8); /* Set background color with alpha value */
+    }
+
+        header nav#topbar {
+            display: flex; /* Use Flexbox layout */
+            width: 100%; /* Set width to 100% */
+            align-items: center; /* Center items */
+            padding: 10px 20px; /* Add padding */
+        }
+
+            header nav#topbar ul {
+                display: flex; /* Use Flexbox layout */
+                list-style: none; /* Remove default list style */
+                gap: 15px; /* Set gap between items */
+                justify-content: center; /* Center items */
+            }
+
+                header nav#topbar ul li {
+                    padding: 15px 20px; /* Add padding */
+                }
+
+                    header nav#topbar ul li a {
+                        text-decoration: none; /* Remove default link underline */
+                        font-weight: 600; /* Set font weight to 600 */
+                        color: black; /* Set text color */
+                        font-size: large; /* Set font size to large */
+                        padding: 10px 20px; /* Add padding */
+                        background-color: rgba(255, 255, 255, 0.5); /* Set background color with alpha value */
+                        border-radius: 5px; /* Add border radius */
+                    }
+                        /* Link styling */
+
+                        header nav#topbar ul li a:hover {
+                            color: #000; /* Set text color on hover */
+                            background-color: rgb(172, 140, 37); /* Set background color on hover */
+                            transition-duration: 1s; /* Set transition duration */
+                        }
+
+    header h3 {
+        color: #2c3e50; /* Set text color */
+        font-size: 2.2rem; /* Set font size */
+        font-family: 'Oswald', sans-serif; /* Set font family */
+        text-align: center; /* Center text */
+        margin: 30px 0; /* Set margin */
+    }
+
+h1 {
+    color: #34495e; /* Set text color */
+    font-size: 4.5rem; /* Set font size */
+    text-align: center; /* Center text */
+    margin: 80px 0; /* Set margin */
+    font-weight: 500; /* Set font weight to 500 */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Add text shadow */
+}
+
+
+
+.input-container input[type="text"], #city-input-btn {
+    height: 40px; /* Set height */
+    padding: 8px 12px; /* Add padding */
+    font-size: 16px; /* Set font size */
+    border-radius: 5px; /* Add border radius */
+    border: 2px solid #ccc; /* Set border */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+#city-input-btn {
+    background-color: #4CAF50; /* Set background color */
+    color: white; /* Set text color */
+    border: none; /* Remove default border */
+    cursor: pointer; /* Set cursor to pointer */
+    transition: background-color 0.3s; /* Add transition effect to the background color */
+}
+
+    #city-input-btn:hover {
+        background-color: #45a049; /* Set background color on hover */
+    }
+
+    #city-input-btn:active {
+        background-color: #397d39; /* Set background color when active */
+    }
+
+
+
+
+.current-info {
+    display: flex; /* Use Flexbox layout */
+    flex-wrap: wrap; /* Allow items to wrap */
+    gap: 20px; /* Set gap between items */
+    padding: 20px; /* Add padding */
+    background-color: rgba(120, 130, 133, 0.3); /* Set background color with alpha value */
+    border-radius: 8px; /* Add border radius */
+    box-shadow: 6px 6px 5px 0px #241b03; /* Add box shadow */
+}
+
+.current-info, .hourly-info, .weekly-info {
+    background-color: rgba(120, 130, 133, 0.3); /* Set background color with alpha value */
+    border-radius: 8px; /* Add border radius */
+    box-shadow: 6px 6px 5px 0px #241b03; /* Add box shadow */
+    padding: 20px; /* Add padding */
+}
+
+    .current-info .card, .hour-block, .week-row {
+        background-color: rgba(120, 130, 133, 0.3); /* Set background color with alpha value */
+        border-radius: 8px; /* Add border radius */
+        box-shadow: 6px 6px 5px 0px #241b03; /* Add box shadow */
+        padding: 15px; /* Add padding */
+        font-family: 'Oswald', sans-serif; /* Set font family */
+    }
+
+    .current-info .card {
+        flex: 1 0 calc(25% - 20px); /* Set flex basis, flex grow, and flex shrink */
+        padding: 20px; /* Add padding */
+        border-radius: 8px; /* Add border radius */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add box shadow */
+        text-align: center; /* Center text */
+    }
+
+        .current-info .card h2 {
+            font-family: 'Oswald', sans-serif; /* Set font family */
+            font-weight: bold; /* Set font weight to bold */
+            font-size: 1.5rem; /* Set font size */
+            margin-bottom: 10px; /* Set margin bottom */
+        }
+
+        .current-info .card p {
+            font-family: 'Open Sans', sans-serif; /* Set font family */
+            font-size: 1rem; /* Set font size */
+            margin: 5px 0; /* Set margin */
+        }
+
+
+.hourly-info {
+    display: flex; /* Use Flexbox layout */
+    overflow-x: auto; /* Allow horizontal scrolling */
+    gap: 20px; /* Set gap between items */
+    padding: 20px; /* Add padding */
+    background-color: rgba(120, 130, 133, 0.3); /* Set background color with alpha value */
+    border-radius: 8px; /* Add border radius */
+    box-shadow: 6px 6px 5px 0px #241b03; /* Add box shadow */
+}
+
+.hour-block {
+    flex: 0 0 calc(12.5% - 20px); /* Set flex basis, flex grow, and flex shrink */
+    text-align: center; /* Center text */
+    padding: 15px; /* Add padding */
+    border-radius: 8px; /* Add border radius */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add box shadow */
+}
+
+.hour-block {
+    display: flex; /* Use Flexbox layout */
+    flex-direction: column; /* Arrange items in a column */
+    align-items: center; /* Center items */
+}
+
+    .hour-block h3 {
+        font-family: 'Oswald', sans-serif; /* Set font family */
+        font-weight: bold; /* Set font weight to bold */
+        font-size: 1rem; /* Set font size */
+        margin-bottom: 5px; /* Set margin bottom */
+    }
+
+    .hour-block img {
+        width: 50px; /* Set width */
+        height: 50px; /* Set height */
+        margin: 10px 0; /* Set margin */
+    }
+
+    .hour-block p {
+        font-family: 'Open Sans', sans-serif; /* Set font family */
+        font-size: 0.9rem; /* Set font size */
+        margin: 5px 0; /* Set margin */
+    }
+
+    .hour-block tomorrow-indicator {
+        align-items: center; /* Center items */
+    }
+
+.history-info {
+    width: 100%; /* Set width to 100% */
+}
+
+.weekly-info {
+    box-shadow: 6px 6px 5px 0px #241b03; /* Add box shadow */
+    background-color: rgba(120, 130, 133, 0.3); /* Set background color with alpha value */
+}
+
+.history-info, .weekly-info {
+    display: flex; /* Use Flexbox layout */
+    flex-direction: column; /* Arrange items in a column */
+    gap: 20px; /* Set gap between items */
+    padding: 20px; /* Add padding */
+    border-radius: 8px; /* Add border radius */
+}
+
+
+    .weekly-info h2 {
+        color: #2c3e50; /* Set text color */
+        font-size: 2.2rem; /* Set font size */
+        font-family: 'Oswald', sans-serif; /* Set font family */
+        text-align: center; /* Center text */
+    }
+
+
+
+.week-row {
+    display: flex; /* Use Flexbox layout */
+    justify-content: space-between; /* Space items evenly */
+    flex-direction: row; /* Arrange items in a row */
+    align-items: center; /* Center items */
+    padding: 15px; /* Add padding */
+    border-radius: 8px; /* Add border radius */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add box shadow */
+}
+
+    .week-row p {
+        font-family: 'Open Sans', sans-serif; /* Set font family */
+        font-size: 0.9rem; /* Set font size */
+        margin: 0; /* Remove default margin */
+        flex: 1; /* Set flex grow to 1 */
+    }
+
+    .week-row img {
+        width: auto; /* Set width to auto */
+        height: 50px; /* Set height */
+        flex: 0 0 auto; /* Set flex basis, flex grow, and flex shrink */
+        object-fit: contain; /* Set object fit to contain */
+    }
+
+    .week-row p#condition {
+        flex: 2; /* Set flex grow to 2 */
+    }
+
+
+
+.card {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(120, 130, 133, 0.3); /* Set background color with alpha value */
+    box-shadow: 6px 6px 5px 0px #241b03; /* Add box shadow */
+    padding: 20px; /* Add padding */
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px; /* Add border radius */
+    text-align: center; /* Center text */
+    flex: 1 0 calc(25% - 20px); /* Set flex basis, flex grow, and flex shrink */
+}
+
+    .card h2 {
+        font-family: 'Open Sans', sans-serif; /* Set font family */
+        font-weight: bold; /* Set font weight to bold */
+        font-size: 1.5rem; /* Set font size */
+        margin-bottom: 8px; /* Set margin bottom */
+    }
+
+    .card p {
+        font-family: 'Open Sans', sans-serif; /* Set font family */
+        font-size: 0.95rem; /* Set font size */
+        line-height: 1.5; /* Set line height */
+        margin: 5px 0; /* Set margin */
+    }
+
+
+.right-section .card {
+    flex: 1; /* Set flex grow to 1 */
+    display: flex; /* Use Flexbox layout */
+    flex-direction: column; /* Arrange items in a column */
+    justify-content: center; /* Center items */
+    padding: 10px; /* Add padding */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    border-radius: 8px; /* Add border radius */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add box shadow */
+}
+
+/* styles for the widgets */
+.widget-container {
+    display: flex; /* Use Flexbox layout */
+    flex-direction: column; /* Arrange items in a column */
+    align-items: center; /* Center items */
+    gap: 15px; /* Set gap between items */
+}
+
+/* Temperature widget */
+.temp-circle {
+    width: 120px; /* Set width */
+    height: 120px; /* Set height */
+    border-radius: 50%; /* Add border radius */
+    background: rgba(255, 255, 255, 0.2); /* Set background color with alpha value */
+    display: flex; /* Use Flexbox layout */
+    align-items: center; /* Center items */
+    justify-content: center; /* Center items */
+    margin: 10px 0; /* Set margin */
+}
+
+.temp-value {
+    font-size: 2.5em; /* Set font size */
+    font-weight: bold; /* Set font weight to bold */
+}
+
+.circle-progress {
+    width: 100px; /* Set width */
+    height: 100px; /* Set height */
+    transform: rotate(-90deg); /* Rotate the circle */
+}
+
+    .circle-progress circle {
+        stroke-width: 8; /* Set stroke width */
+        stroke: rgba(255, 255, 255, 0.2); /* Set stroke color with alpha value */
+    }
+
+    .circle-progress .progress {
+        stroke: white; /* Set stroke color */
+        stroke-linecap: round; /* Set stroke line cap to round */
+        transition: stroke-dashoffset 0.5s; /* Add transition effect to the stroke dash offset */
+    }
+
+.cloud-widget, .humidity-gauge {
+    display: flex; /* Use Flexbox layout */
+    justify-content: center; /* Center items */
+    align-items: center; /* Center items */
+    position: relative; /* Set position to relative */
+}
+
+.percentage {
+    position: absolute; /* Set position to absolute */
+    font-size: 1.5rem; /* Set font size */
+    font-weight: bold; /* Set font weight to bold */
+}
+
+
+/* Sun/Moon Cycle */
+.day-cycle {
+    width: 100%; /* Set width to 100% */
+    max-width: 200px; /* Set maximum width */
+    margin: 0 auto; /* Center horizontally */
+}
+
+.cycle-progress {
+    width: 100%; /* Set width to 100% */
+    height: 60px; /* Set height */
+    margin-bottom: 10px; /* Set margin bottom */
+}
+
+.cycle-path {
+    fill: none; /* Do not fill the path */
+    stroke: rgba(255, 255, 255, 0.2);
+    stroke-width: 2;
+}
+
+.sun-position {
+    fill: #FFD700; /* Golden color for sun */
+}
+
+.sun-details {
+    margin-top: 15px;
+    text-align: center;
+}
+
+/* For the sun position, to create different time-based classes */
+/* Styles for the sun position based on time of day */
+.sun-morning {
+    transform: translateX(25%); /* Translate the sun to the morning position */
+}
+
+.sun-noon {
+    transform: translateX(50%); /* Translate the sun to the noon position */
+}
+
+.sun-evening {
+    transform: translateX(75%); /* Translate the sun to the evening position */
+}
+
+
+/* Styles for the moon phase card */
+.moon-phase {
+    position: relative; /* Set position to relative */
+    width: 120px; /* Set width */
+    height: 120px; /* Set height */
+    margin: 0 auto; /* Center horizontally */
+}
+
+.moon-circle {
+    width: 100%; /* Set width to 100% */
+    height: 100%; /* Set height to 100% */
+}
+
+.moon-bg {
+    fill: rgba(255, 255, 255, 0.2); /* Set background color with alpha */
+}
+
+.moon-fill {
+    fill: white; /* Set fill color to white */
+}
+
+.phase-percentage {
+    position: absolute; /* Set position to absolute */
+    top: 50%; /* Position at 50% from the top */
+    left: 50%; /* Position at 50% from the left */
+    transform: translate(-50%, -50%); /* Center the element */
+    font-size: 1.2em; /* Set font size */
+    font-weight: bold; /* Set font weight to bold */
+}
+
+.moon-details {
+    margin-top: 15px; /* Set margin top */
+    text-align: center; /* Center text */
+}
+
+.humidity-gauge {
+    position: relative; /* Set position to relative */
+    width: 120px; /* Set width */
+    height: 120px; /* Set height */
+}
+
+
+/* Visibility Meter Styles */
+.visibility-meter {
+    width: 100%; /* Set width to 100% */
+}
+
+.meter-scale {
+    height: 10px; /* Set height */
+    background: rgba(255,255,255,0.2); /* Set background color with alpha */
+    border-radius: 5px; /* Set border radius */
+    overflow: hidden; /* Hide overflow */
+}
+
+.meter-indicator {
+    height: 100%; /* Set height to 100% */
+    background: white; /* Set background color to white */
+    transition: width 0.5s; /* Add transition effect to width */
+    width: 80%; /* Set initial width */
+}
+
+.meter-labels {
+    display: flex; /* Use Flexbox layout */
+    justify-content: space-between; /* Space labels evenly */
+    margin-top: 5px; /* Set margin top */
+    font-size: 0.6em; /* Set font size */
+}
+
+
+/* Pressure Gauge */
+.pressure-gauge {
+    width: 150px; /* Set width */
+    height: 150px; /* Set height */
+    position: relative; /* Set position to relative */
+    margin-bottom: 15px; /* distance between gauge and texts*/
+}
+
+.gauge-dial {
+    width: 100%; /* Set width to 100% */
+    height: 100%; /* Set height to 100% */
+    border-radius: 50%; /* Set border radius to 50% */
+    border: 5px solid rgba(255,255,255,0.2); /* Set border */
+    position: relative; /* Set position to relative */
+}
+
+.gauge-pointer {
+    position: absolute; /* Set position to absolute */
+    width: 4px; /* Set width */
+    height: 50%; /* Set height */
+    background: white; /* Set background color to white */
+    left: 50%; /* Position at 50% from the left */
+    bottom: 50%; /* Position at 50% from the bottom */
+    transform-origin: bottom center; /* Set transform origin */
+    transition: transform 0.5s; /* Add transition effect to transform */
+    transform: rotate(45deg); /* Set initial rotation */
+}
+
+
+/* UV Scale Styles */
+.uv-scale {
+    width: 100%; /* Set width to 100% */
+    height: 40px; /* Set height */
+    background: linear-gradient(to right, #3EA72D 0%, #86B828 25%, #F0D800 50%, #F08800 75%, #DC0000 100%); /* Set background gradient */
+    border-radius: 20px; /* Set border radius */
+    position: relative; /* Set position to relative */
+    margin: 10px 0; /* Set margin */
+}
+
+.uv-indicator {
+    position: absolute; /* Set position to absolute */
+    top: -10px; /* Position above the scale */
+    width: 20px; /* Set width */
+    height: 20px; /* Set height */
+    background: white; /* Set background color to white */
+    border-radius: 50%; /* Set border radius to 50% */
+    transform: translateX(-50%); /* Center the indicator */
+    box-shadow: 0 0 5px rgba(0,0,0,0.3); /* Add box shadow */
+    left: 30%; /* Position at 30% from the left */
+}
+
+.uv-levels {
+    display: flex; /* Use Flexbox layout */
+    justify-content: space-between; /* Space levels evenly */
+    padding: 5px; /* Set padding */
+    color: white; /* Set text color to white */
+    font-size: 0.8em; /* Set font size */
+    -webkit-text-stroke: 0px; /* No text outlines for this part */
+    text-shadow: none; /* No text outlines for this part */
+}
+
+/* Footer Styles */
+footer {
+    background-color: #003f73; /* Set background color */
+    color: white; /* Set text color to white */
+    text-align: center; /* Center text */
+    padding: 10px; /* Set padding */
+    margin-top: 20px; /* Set margin top */
+    position: relative; /* Set position to relative */
+    z-index: 1; /* Set z-index */
+}

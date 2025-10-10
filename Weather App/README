@@ -1,0 +1,33 @@
+## Authors
+
+- **Cindy Ni** - *Back-End Developer*
+- **Isaac Alawiye** - *Front-End Developer*
+- **Yuxuan Zhang** - *Front-End Developer*
+
+
+## References for this project
+
+1. **WeatherAPI**
+   - URL: [WeatherAPI Documentation](https://www.weatherapi.com/docs/)
+   - Purpose: Provides real-time, forecast, and historical weather data used in the application.
+   - Usage:
+     - API Key: `89ffa055a75b47868ca190752243011`
+     - Endpoints: 
+       - Current Weather
+       - Forecast Weather
+       - Historical Weather
+
+2. **FontAwesome**
+   - URL: [FontAwesome Icons](https://fontawesome.com/)
+   - Purpose: Used for weather icons
+
+3. **Google Fonts**
+   - URL: [Google Fonts - Open Sans](https://fonts.google.com/specimen/Open+Sans)
+   - Purpose: Provides consistent and modern typography for the UI.
+
+4. **Unsplash**
+   - URL: [Unsplash](https://unsplash.com/)
+   - Purpose: Source for dynamic background images based on weather conditions.
+
+5. **ChatGPT**
+    -Purpose: Provides advices and instructions

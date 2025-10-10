@@ -1,0 +1,42 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather History</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="js/scriptHistory.js" defer></script>
+</head>
+<body>
+    <header>
+        <!-- Navigation bar for the weather app-->
+        <nav id="topbar"> 
+            <!-- Input section for city name -->
+            <section class="input-container">
+                <input type="text" id="city-input" placeholder="Enter city name"> <!-- Text input for user to enter city name -->
+                <button id="city-input-btn" onclick="weatherFn($('#city-input').val())">Get Weather</button> <!-- Button to fetch weather for the entered city -->
+            </section>
+            <!-- Navigation links -->
+            <ul>
+                <li><a href="mainPage.html">HOME</a></li> <!-- Link to the main page -->
+                <li><a id="history-link" href="#">HISTORY</a></li><!--link for history page-->
+                <li><a href='https://zoom.earth/maps/satellite/#view=53.015,-112.837,6z'>MAP</a></li> <!-- Link to the map page -->
+                <li><a href='https://www.ualberta.ca/en/news/index.html'>NEWS</a></li> <!-- Link to the news page -->
+            </ul>
+        </nav>
+        <h3>History Weather</h3>
+        <h1 id="city"></h1>
+    </header>
+
+    <main> <!-- Main content section of the HTML document -->
+        <div class="history-info" id="history"> <!-- Container for history information with an ID -->
+            <p>Loading history weather data...</p> <!-- Placeholder text for loading history data -->
+        </div>
+    </main>
+    <footer>
+        <p>Data source from WeatherAPI, Image source from unsplash.</p>
+    </footer>
+</body>
+</html>
